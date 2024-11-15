@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Програма шифрування</title>
+</head>
+<body>
+    <h2>Простий шифратор</h2>
+    <p>Введіть текст для шифрування. Кожне слово буде оброблено так, що його перша та остання букви залишаться на місці, а внутрішні будуть перемішані.</p>
+    <textarea id="inputText" rows="4" cols="50" placeholder="Введіть текст..."></textarea><br><br>
+    <button onclick="encryptText()">Зашифрувати</button>
+    <h3>Результат:</h3>
+    <p id="result"></p>
+
+    <script>
+        function shuffleWord(word) {
+            if (word.length <= 3) return word;
+            const middleChars = word.slice(1, -1).split('');
+            for (let i = middleChars.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [middleChars[i], middleChars[j]] = [middleChars[j], middleChars[i]];
+            }
+            return word[0] + middleChars.join('') + word[word.length - 1];
+        }
+
+        function encryptText() {
+            const inputText = document.getElementById("inputText").value;
+            const words = inputText.split(' ');
+            const encryptedWords = words.map(shuffleWord);
+            document.getElementById("result").textContent = encryptedWords.join(' ');
+        }
+    </script>
+</body>
+</html>
