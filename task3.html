@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шифрування</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Програма шифрування</h1>
+    <p>Введіть текст для шифрування:</p>
+    <textarea id="inputText" placeholder="Введіть текст тут..."></textarea>
+    <br>
+    <button onclick="encryptText()">Зашифрувати</button>
+    <h2>Результат:</h2>
+    <p id="outputText"></p>
+
+    <script>
+        function encryptText() {
+            const input = document.getElementById('inputText').value;
+            const output = document.getElementById('outputText');
+
+            const alphabet = 'абвгґдежзийклмнопрстуфхцчшщьюя';
+            const shiftedAlphabet = 'бвгґдежзийклмнопрстуфхцчшщьюяа';
+
+            let encryptedText = '';
+
+            for (let char of input.toLowerCase()) {
+                const index = alphabet.indexOf(char);
+
+                if (index !== -1) {
+                    encryptedText += shiftedAlphabet[index];
+                } else {
+                    encryptedText += char; // Якщо символ не в алфавіті, залишаємо без змін
+                }
+            }
+
+            output.textContent = encryptedText;
+        }
+    </script>
+</body>
+</html>
 
