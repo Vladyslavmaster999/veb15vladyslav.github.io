@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5 Task 2</title>
+</head>
+<body>
+    <h1>Слово та літера 'е'</h1>
+
+    <label for="textInput">Введіть текст:</label>
+    <textarea id="textInput" rows="4" cols="50"></textarea><br>
+
+    <button onclick="processText()">Обробити текст</button>
+
+    <p id="wordCount"></p>
+    <p id="modifiedText"></p>
+
+    <script>
+        function processText() {
+            // Отримуємо введений текст
+            const text = document.getElementById('textInput').value;
+
+            // Розбиваємо текст на слова
+            const words = text.split(/\s+/);
+
+            // Підраховуємо кількість слів, що закінчуються на 'е'
+            let count = 0;
+            words.forEach(word => {
+                if (word.endsWith('е')) {
+                    count++;
+                }
+            });
+
+            // Додаємо пробіл після кожної літери у другому слові
+            if (words.length >= 2) {
+                words[1] = words[1].split('').join(' ');
+            }
+
+            // Виводимо результати
+            document.getElementById('wordCount').innerText = `Кількість слів, що закінчуються на 'е': ${count}`;
+            document.getElementById('modifiedText').innerText = `Текст з модифікованим другим словом: ${words.join(' ')}`;
+        }
+    </script>
+
+</body>
+</html>
 
