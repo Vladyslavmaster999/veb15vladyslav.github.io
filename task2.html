@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>task2</title>
     <style>
-        /* Встановлюємо фіксовану ширину текстової області */
+ 
         #textInput {
-            width: 200px; /* Налаштуйте ширину відповідно до мітки */
+            width: 200px; 
             height: 15px;
         }
     </style>
@@ -25,13 +25,11 @@
 
     <script>
         function processText() {
-            // Отримуємо введений текст
+
             const text = document.getElementById('textInput').value;
 
-            // Розбиваємо текст на слова
             const words = text.split(/\s+/);
 
-            // Підраховуємо кількість слів, що закінчуються на 'е'
             let count = 0;
             words.forEach(word => {
                 if (word.endsWith('е')) {
@@ -39,12 +37,10 @@
                 }
             });
 
-            // Додаємо пробіл після кожної літери у другому слові
             if (words.length >= 2) {
                 words[1] = words[1].split('').join(' ');
             }
 
-            // Виводимо результати
             document.getElementById('wordCount').innerText = `Кількість слів, що закінчуються на 'е': ${count}`;
             document.getElementById('modifiedText').innerText = `Текст з модифікованим другим словом: ${words.join(' ')}`;
         }
