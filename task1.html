@@ -11,12 +11,10 @@
     <p id="result"></p>
 
     <script>
-        // Функція для заміни символу '*' на '++'
-        function replaceStarWithPlusPlus(text) {
-            return text.replace(/\*/g, '++'); // Заміна всіх '*' на '++'
-        }
 
-        // Функція для підрахунку загальної кількості літер 'F' та 'D'
+        function replaceStarWithPlusPlus(text) {
+            return text.replace(/\*/g, '++'); 
+
         function countFandD(text) {
             let count = 0;
             for (let i = 0; i < text.length; i++) {
@@ -27,16 +25,12 @@
             return count;
         }
 
-        // Отримуємо початковий текст
         let inputText = document.getElementById("inputText").textContent;
 
-        // Заміна '*' на '++'
         let modifiedText = replaceStarWithPlusPlus(inputText);
 
-        // Підрахунок загальної кількості літер 'F' та 'D'
         let fdCount = countFandD(modifiedText);
 
-        // Виведення результату
         document.getElementById("result").innerHTML = `Модифікований текст: ${modifiedText}<br>Загальна кількість літер 'F' та 'D': ${fdCount}`;
     </script>
 
